@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DEMAND_MODEL_DIR: /service/models
+      DEMAND_DATA_PATH: /service/data/sales.csv
+      DEMAND_API_KEY: ${DEMAND_API_KEY:-}
+    volumes:
+      - ./models:/service/models
+    restart: unless-stopped
